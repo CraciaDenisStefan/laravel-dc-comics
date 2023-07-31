@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-
+    <a href="{{route('comics.create')}}">ADD</a>
     <table class="table">
         <thead>
           <tr>
