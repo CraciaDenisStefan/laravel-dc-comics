@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <form action="" method="POST">
+    <form action="{{route('comics.store')}}" method="POST">
     @csrf
         <div class="form-group">
             <label class="control-label">Titolo</label>
@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
             <label class="control-label">Descrizzione</label>
-            <textarea id="scrittori" name="descriptions" class="form-control">
+            <textarea id="scrittori" name="description" class="form-control">
             </textarea>
         </div>
         <div class="form-group">
