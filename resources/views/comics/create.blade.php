@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="container">
-
+<div class="container text-white p-5">
+    <h1 class="text-white">Inserisci un nuovo fumetto</h1>
     <form action="{{route('comics.store')}}" method="POST">
     @csrf
         <div class="form-group">
@@ -43,11 +43,16 @@
             <textarea id="scrittori" name="description" class="form-control">
             </textarea>
         </div>
-        <div class="form-group">
+        <div class="form-group mt-4">
             <button type="submit"  class="btn btn-primary">Salva</button>
         </div>
                 
     </form>
+
+    <div class="mt-5">
+        <a href="{{route('home')}}" class="btn btn-outline-light "  role="button" aria-disabled="true">Torna alla Home</a>
+        <a class="btn btn-outline-light" href="{{route('comics.index')}}">Vai al DB !</a>
+    </div>
 
 </div>
 

@@ -3,7 +3,10 @@
 @section('content')
 
 <div class="container">
-    <a href="{{route('comics.create')}}">ADD</a>
+    <div class="d-flex justify-content-between">
+      <a class="btn btn-success p-2 m-5" href="{{route('comics.create')}}">Aggiungi un altro fumetto !</a>
+      <a class="btn btn-success p-2 m-5" href="{{route('home')}}">Torna alla Home !</a>
+    </div>
     <table class="table">
         <thead>
           <tr>
@@ -21,9 +24,9 @@
             <th scope="row">{{$comic->id}}</th>
             <td>{{$comic->title}}</td>
             <td>{{$comic->series}}</td>
-            <td>{{$comic->price}}</td>
+            <td>${{$comic->price}}</td>
             <td>{{$comic->description}}</td>
-            <td><a href="{{route('comics.show', $comic->id)}}">B</a></td>
+            <td class="text-end"><a href="{{route('comics.show', $comic->id)}}"><i class="fa-solid fa-eye"></i></a></td>
           </tr>
         </tbody>
         @endforeach
