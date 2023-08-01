@@ -39,19 +39,10 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required | max:250',
-            'description' => 'required',
-            'thumb'=> 'max:250',
-            'price' => 'required|numeric | regex:/^.+$/i',
-            'series'=> 'required|max:250',
-            'sale_date'=> 'required|date'
-
-        ]);
+     
+        $form_data = $this->validation($request->all());
 
 
-
-        $form_data = $request->all();
 
         $comic = new Comic();
 
@@ -103,17 +94,7 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        $request->validate([
-            'title' => 'required | max:250',
-            'description' => 'required',
-            'thumb'=> 'max:250',
-            'price' => 'required|numeric | regex:/^.+$/i',
-            'series'=> 'required|max:250',
-            'sale_date'=> 'required|date'
-
-        ]);
-
-        $form_data= $request->all();
+        $form_data = $this->validation($request->all());
 
         $comic->update($form_data);
 
@@ -131,5 +112,41 @@ class ComicController extends Controller
         $comic->delete();
 
         return redirect()->route('comics.index');
+    }
+
+    private function validation($data){
+
+        $validator = Validator::make($data,
+            [
+                'title' => 'required | max:250',
+                'description' => 'required',
+                'thumb'=> 'max:250',
+                'price' => 'required|numeric ',
+                'series'=> 'required|max:250',
+                'sale_date'=> 'required|date',
+                'cover_image'=>'max:1000',
+                'artists' => 'max:1000',
+                'writers' => 'max:1000'
+            ],
+            [
+                'title.required' => 'Il titolo è obbligatorio !',
+                'title.max' => 'Il titolo deve essere lungo massimo :max caratteri !',
+                'thumb.max' => 'Il thumb deve contenere massimo :max caratteri !',
+                'price.required' => 'Il prezzo è obbligatorio !',
+                'price.numeric' => 'Il prezzo deve contenere solo numeri ! Per delimitare il prezzo usare \'.\' e non \',\' ! ( Es: 2.58 )',
+                'series.required' => 'La serie è obbligatoria !',
+                'series.max' => 'La serie deve contenere massimo :max caratteri !',
+                'sale_date.required' => 'La data è obbligatoria !',
+                'sale_date.date' => 'Inserisci una data valida !',
+                'artists.max' => 'Artisti deve essere lungo massimo :max caratteri !'
+
+            ]
+
+        )->validate();
+
+        return $validator;
+
+
+
     }
 }

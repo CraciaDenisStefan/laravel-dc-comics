@@ -15,7 +15,7 @@
     </div>
 @endif
 
-    <form action="{{route('comics.update', $comic->id)}}" method="POST">
+    <form action="{{route('comics.update', $comic->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
         <div class="form-group">
@@ -24,14 +24,14 @@
         </div>
         <div class="form-group">
             <label class="control-label">Thumb</label>
-            @if($comic->thumb != NULL || $comic->thumb =! '')
+            @if($comic->thumb != NULL || $comic->thumb != '')
             <div class="col-1">   <img src="{{$comic->thumb}}" class="img-fluid"></div>
             @endif
             <input type="text" id="thumb" name="thumb" class="form-control" value="{{old('thumb') ?? $comic->thumb}}">
         </div>
         <div class="form-group">
             <label class="control-label">Copertina</label>
-            <input type="text" id="copertina" name="cover_image" class="form-control " value="{{old('cove_image') ?? $comic->cover_image}}">
+            <input type="text" id="copertina" name="cover_image" class="form-control " value="{{old('cover_image') ?? $comic->cover_image}}">
         </div>
         <div class="form-group">
             <label class="control-label">Prezzo</label>
@@ -48,15 +48,15 @@
         </div>
         <div class="form-group">
             <label class="control-label">Artisti</label>
-            <input type="text" id="artisti" name="artist" class="form-control" value="{{old('artists') ??  $comic->artists}}">
+            <textarea id="scrittori" name="artists" class="form-control">{{old('artists') ??  $comic->artists}}</textarea>
         </div>
         <div class="form-group">
             <label class="control-label">Scrittori</label>
-            <input type="text" id="scrittori" name="writers" class="form-control" value="{{old('writers') ?? $comic->writers}}">
+            <textarea id="scrittori" name="writers" class="form-control">{{old('writers') ??  $comic->writers}}</textarea>
         </div>
         <div class="form-group">
             <label class="control-label">Descrizzione</label>
-            <textarea id="scrittori" name="description" class="form-control">{{old('description') ?? $comic->description}}
+            <textarea id="description" name="description" class="form-control">{{old('description') ?? $comic->description}}
             </textarea>
         </div>
         <div class="form-group mt-4">

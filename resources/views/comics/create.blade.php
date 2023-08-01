@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    <form action="{{route('comics.store')}}" method="POST">
+    <form action="{{route('comics.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
         <div class="form-group">
             <label class="control-label">Titolo</label>
@@ -43,15 +43,15 @@
         </div>
         <div class="form-group">
             <label class="control-label">Artisti</label>
-            <input type="text" id="artisti" name="artist" class="form-control" value="{{old('artist')}}">
+            <textarea id="scrittori" name="artist" class="form-control">{{old('artists')}}</textarea>
         </div>
         <div class="form-group">
             <label class="control-label">Scrittori</label>
-            <input type="text" id="scrittori" name="writers" class="form-control" value="{{old('writers')}}">
+            <textarea id="scrittori" name="writers" class="form-control">{{old('writers')}}</textarea>
         </div>
         <div class="form-group">
             <label class="control-label">Descrizzione</label>
-            <textarea id="scrittori" name="description" class="form-control">{{old('description')}}
+            <textarea id="description" name="description" class="form-control">{{old('description')}}
             </textarea>
         </div>
         <div class="form-group mt-4">
