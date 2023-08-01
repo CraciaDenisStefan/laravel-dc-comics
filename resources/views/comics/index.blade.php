@@ -29,7 +29,7 @@
             <td class="text-end">
               <a href="{{route('comics.show', $comic->id)}}"><i class="fa-solid fa-eye"></i></a>
               <a href="{{route('comics.edit', $comic->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
-              <form action="{{route('comics.destroy', $comic->id)}}" method="POST">
+              <form action="{{route('comics.destroy', $comic->id)}}" method="POST" onsubmit="return confirm('Sei sicuro di voler cancellare ?!?!?!?')">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn text-primary">
