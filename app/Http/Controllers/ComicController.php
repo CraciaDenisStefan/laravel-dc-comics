@@ -69,8 +69,10 @@ class ComicController extends Controller
      * @param  \App\Models\Comic  $comic
      * @return \Illuminate\Http\Response
      */
-    public function show(Comic $comic)
+    public function show($id)
     {
+        $comic = Comic::findOrFail($id);
+
         return view('comics.show', compact('comic'));
     }
 
@@ -126,7 +128,7 @@ class ComicController extends Controller
                 'sale_date'=> 'required|date',
                 'cover_image'=>'max:1000',
                 'artists' => 'max:1000',
-                'writers' => 'max:1000'
+                'writers' => 'max:1000',
             ],
             [
                 'title.required' => 'Il titolo è obbligatorio !',

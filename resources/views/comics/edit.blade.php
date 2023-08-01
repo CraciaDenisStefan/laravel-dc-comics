@@ -6,14 +6,14 @@
     <h1 class="text-white">Modifica il tuo fumetto</h1>
 
     @if($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <form action="{{route('comics.update', $comic->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
