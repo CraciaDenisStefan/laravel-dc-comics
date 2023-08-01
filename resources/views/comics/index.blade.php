@@ -26,7 +26,10 @@
             <td>{{$comic->series}}</td>
             <td>${{$comic->price}}</td>
             <td>{{$comic->description}}</td>
-            <td class="text-end"><a href="{{route('comics.show', $comic->id)}}"><i class="fa-solid fa-eye"></i></a></td>
+            <td class="text-end">
+              <a href="{{route('comics.show', $comic->id)}}"><i class="fa-solid fa-eye"></i></a>
+              <a href="{{route('comics.edit', $comic->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
+            </td>
           </tr>
         </tbody>
         @endforeach
